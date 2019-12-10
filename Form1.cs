@@ -38,12 +38,10 @@ namespace Motochek_Processor
         {
             ResetVars();
             outputs = new List<String>();
+            //create headings for CSV
             outputs.Add("rego,vin,regExp,wofExp,rucExp");
         }
         
-        //==========FILE SELECTION==========//
-
-        //hidden variables to make sure file path fields are not empty.
         
         private void button1_Click(object sender, EventArgs e)
         {
@@ -110,7 +108,7 @@ namespace Motochek_Processor
                         GetRUCExpiry(rego);
                     }
 
-                    outputs.Add(rego + "," + vin + "," + regExp + "," + wofExp + "," + rucExp);                    
+                    outputs.Add(rego + "," + vin + "," + regExp + "," + wofExp + "," + rucExp);
                     //MessageBox.Show("Rego: " + rego + "\nVIN: " + vin + "\nReg Expiry: " + regExp + "\nWOF Expiry: " + wofExp + "\nRUC Expiry: " + rucExp, "Motochek Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     ResetVars();
                 }
