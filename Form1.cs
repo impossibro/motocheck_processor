@@ -15,17 +15,24 @@ namespace Motochek_Processor
     {
         private Boolean file1OK = false;
         private Boolean file2OK = false;
+        private Boolean fuelFileOK = false;
 
         private String[] rawPermitData;
         private String[] rawRUCData;
+        private String[] rawFuelData;
 
         private String rego;
         private String vin;
         private String regExp;
         private String wofExp;
         private String rucExp;
+        private String fuelType;
+        private String make;
+        private String model;
+        private String vehicleYear;
 
         private List<String> outputs;
+        private List<String> fuelOutput;
 
 
 
@@ -38,38 +45,41 @@ namespace Motochek_Processor
         {
             ResetVars();
             outputs = new List<String>();
+            fuelOutput = new List<String>();
             //create headings for CSV
             outputs.Add("rego,vin,regExp,wofExp,rucExp");
+            fuelOutput.Add("rego, vin, vehicleYear, make, model, fuelType");
         }
         
-        
-        private void button1_Click(object sender, EventArgs e)
+        //button clicks for reminder import features
+
+        private void Button1_Click(object sender, EventArgs e)
         {
             if(openFileDialog1.ShowDialog() == DialogResult.OK)
             {
-                textBox1.Text = openFileDialog1.FileName;
+                permitTextBox.Text = openFileDialog1.FileName;
                 file1OK = true;
             }
         }
 
 
-        private void button2_Click(object sender, EventArgs e)
+        private void Button2_Click(object sender, EventArgs e)
         {
             if(openFileDialog2.ShowDialog() == DialogResult.OK)
             {
-                textBox2.Text = openFileDialog2.FileName;
+                rucTextBox.Text = openFileDialog2.FileName;
                 file2OK = true;
             }
         }
 
 
-        private void button3_Click(object sender, EventArgs e)
+        private void Button3_Click(object sender, EventArgs e)
         {
             //check if both files have been selected and then process them.
             if (file1OK && file2OK)
             {
-                rawPermitData = File.ReadAllLines(textBox1.Text);
-                rawRUCData = File.ReadAllLines(textBox2.Text);
+                rawPermitData = File.ReadAllLines(permitTextBox.Text);
+                rawRUCData = File.ReadAllLines(rucTextBox.Text);
                 ProcessRegWOFFile();
             }
             else
@@ -78,6 +88,33 @@ namespace Motochek_Processor
             }
         }
 
+        //button clicks for fuel processing features
+
+        private void btnSelectVehicleDetails_Click(object sender, EventArgs e)
+        {
+            if (openFileDialog3.ShowDialog() == DialogResult.OK)
+            {
+                fuelTextBox.Text = openFileDialog3.FileName;
+                fuelFileOK = true;
+            }
+        }
+
+        private void btnFuelProcess_Click(object sender, EventArgs e)
+        {
+            if(fuelFileOK)
+            {
+                rawFuelData = File.ReadAllLines(fuelTextBox.Text);
+                ProcessFuelFile();
+
+            }
+            else
+            {
+                MessageBox.Show("Please select vehicle details file", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
+
+
+        //processing functions for reminders
 
         private void ProcessRegWOFFile()
         {
@@ -143,6 +180,49 @@ namespace Motochek_Processor
             }
         }
 
+        //processing functions for fuel types
+        private void ProcessFuelFile()
+        {
+            for (int i = 1; i < rawFuelData.Length; i++)
+            {
+             
+                rego = rawFuelData[i].Substring(1, 6);
+                vin = rawFuelData[i].Substring(13, 17);
+                vehicleYear = rawFuelData[i].Substring(36, 4);
+                make = rawFuelData[i].Substring(40, 20);
+                model = rawFuelData[i].Substring(60, 20);
+
+                if(rawFuelData[i].Substring(1061, 2) == "01")
+                {
+                    fuelType = "Petrol";
+                } else if (rawFuelData[i].Substring(1061, 2) == "02")
+                {
+                    fuelType = "Diesel";
+                } else if (rawFuelData[i].Substring(1061, 2) == "03")
+                {
+                    fuelType = "CNG";
+                } else if (rawFuelData[i].Substring(1061, 2) == "04")
+                {
+                    fuelType = "LPG";
+                } else if (rawFuelData[i].Substring(1061, 2) == "05")
+                {
+                    fuelType = "Electric";
+                } else
+                {
+                    fuelType = "Other";
+                }
+
+                fuelOutput.Add(rego + "," + vin + "," + vehicleYear + "," + make + "," + model + "," + fuelType);
+                //MessageBox.Show("Rego: " + rego + "\nVIN: " + vin + "\nReg Expiry: " + regExp + "\nWOF Expiry: " + wofExp + "\nRUC Expiry: " + rucExp, "Motochek Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                ResetVars();
+            
+            }
+            File.WriteAllLines("FuelTypesOutput.csv", fuelOutput);
+            MessageBox.Show("Fuel file processing complete!", "Success!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+
+
+        //other functions
         private void ResetVars()
         {
             this.rego = "";
@@ -150,7 +230,12 @@ namespace Motochek_Processor
             this.regExp = "";
             this.wofExp = "";
             this.rucExp = "0";
+            fuelType = "";
+            make = "";
+            model = "";
+            vehicleYear = "0";
         }
+
 
 
     }

@@ -29,109 +29,181 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            this.button1 = new System.Windows.Forms.Button();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.button2 = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
+            this.btnSelectPermit = new System.Windows.Forms.Button();
+            this.permitTextBox = new System.Windows.Forms.TextBox();
+            this.rucTextBox = new System.Windows.Forms.TextBox();
+            this.btnSelectRuc = new System.Windows.Forms.Button();
+            this.permitTextBoxLabel = new System.Windows.Forms.Label();
+            this.rucTextBoxLabel = new System.Windows.Forms.Label();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.openFileDialog2 = new System.Windows.Forms.OpenFileDialog();
-            this.button3 = new System.Windows.Forms.Button();
+            this.btnReminderProcess = new System.Windows.Forms.Button();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
+            this.reminderImportTitleLabel = new System.Windows.Forms.Label();
+            this.fuelProcessingLabel = new System.Windows.Forms.Label();
+            this.fuelTextBoxLabel = new System.Windows.Forms.Label();
+            this.fuelTextBox = new System.Windows.Forms.TextBox();
+            this.btnSelectVehicleDetails = new System.Windows.Forms.Button();
+            this.btnFuelProcess = new System.Windows.Forms.Button();
+            this.openFileDialog3 = new System.Windows.Forms.OpenFileDialog();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.SuspendLayout();
             // 
-            // button1
+            // btnSelectPermit
             // 
-            this.button1.Location = new System.Drawing.Point(372, 11);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 20);
-            this.button1.TabIndex = 0;
-            this.button1.Text = "Select...";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.btnSelectPermit.Location = new System.Drawing.Point(372, 37);
+            this.btnSelectPermit.Name = "btnSelectPermit";
+            this.btnSelectPermit.Size = new System.Drawing.Size(75, 20);
+            this.btnSelectPermit.TabIndex = 0;
+            this.btnSelectPermit.Text = "Select...";
+            this.btnSelectPermit.UseVisualStyleBackColor = true;
+            this.btnSelectPermit.Click += new System.EventHandler(this.Button1_Click);
             // 
-            // textBox1
+            // permitTextBox
             // 
-            this.textBox1.Enabled = false;
-            this.textBox1.Location = new System.Drawing.Point(132, 12);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(234, 20);
-            this.textBox1.TabIndex = 1;
+            this.permitTextBox.Enabled = false;
+            this.permitTextBox.Location = new System.Drawing.Point(132, 38);
+            this.permitTextBox.Name = "permitTextBox";
+            this.permitTextBox.Size = new System.Drawing.Size(234, 20);
+            this.permitTextBox.TabIndex = 1;
             // 
-            // textBox2
+            // rucTextBox
             // 
-            this.textBox2.Enabled = false;
-            this.textBox2.Location = new System.Drawing.Point(132, 39);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(234, 20);
-            this.textBox2.TabIndex = 2;
+            this.rucTextBox.Enabled = false;
+            this.rucTextBox.Location = new System.Drawing.Point(132, 65);
+            this.rucTextBox.Name = "rucTextBox";
+            this.rucTextBox.Size = new System.Drawing.Size(234, 20);
+            this.rucTextBox.TabIndex = 2;
             // 
-            // button2
+            // btnSelectRuc
             // 
-            this.button2.Location = new System.Drawing.Point(372, 39);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 20);
-            this.button2.TabIndex = 3;
-            this.button2.Text = "Select...";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            this.btnSelectRuc.Location = new System.Drawing.Point(372, 65);
+            this.btnSelectRuc.Name = "btnSelectRuc";
+            this.btnSelectRuc.Size = new System.Drawing.Size(75, 20);
+            this.btnSelectRuc.TabIndex = 3;
+            this.btnSelectRuc.Text = "Select...";
+            this.btnSelectRuc.UseVisualStyleBackColor = true;
+            this.btnSelectRuc.Click += new System.EventHandler(this.Button2_Click);
             // 
-            // label1
+            // permitTextBoxLabel
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(12, 15);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(114, 13);
-            this.label1.TabIndex = 4;
-            this.label1.Text = "Select Permit Data File";
+            this.permitTextBoxLabel.AutoSize = true;
+            this.permitTextBoxLabel.Location = new System.Drawing.Point(12, 41);
+            this.permitTextBoxLabel.Name = "permitTextBoxLabel";
+            this.permitTextBoxLabel.Size = new System.Drawing.Size(114, 13);
+            this.permitTextBoxLabel.TabIndex = 4;
+            this.permitTextBoxLabel.Text = "Select Permit Data File";
             // 
-            // label2
+            // rucTextBoxLabel
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(12, 42);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(108, 13);
-            this.label2.TabIndex = 5;
-            this.label2.Text = "Select RUC Data File";
+            this.rucTextBoxLabel.AutoSize = true;
+            this.rucTextBoxLabel.Location = new System.Drawing.Point(12, 68);
+            this.rucTextBoxLabel.Name = "rucTextBoxLabel";
+            this.rucTextBoxLabel.Size = new System.Drawing.Size(108, 13);
+            this.rucTextBoxLabel.TabIndex = 5;
+            this.rucTextBoxLabel.Text = "Select RUC Data File";
             // 
             // openFileDialog1
             // 
-            this.openFileDialog1.FileName = "openFileDialog1";
             this.openFileDialog1.Filter = "Motochek Files (*.mc.txt)|*.mc.txt|All files (*.*)|*.*";
             // 
             // openFileDialog2
             // 
-            this.openFileDialog2.FileName = "openFileDialog2";
             this.openFileDialog2.Filter = "Motochek Files (*.mc.txt)|*.mc.txt|All files (*.*)|*.*";
             // 
-            // button3
+            // btnReminderProcess
             // 
-            this.button3.Location = new System.Drawing.Point(372, 82);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(75, 23);
-            this.button3.TabIndex = 6;
-            this.button3.Text = "Process";
-            this.button3.UseVisualStyleBackColor = true;
-            this.button3.Click += new System.EventHandler(this.button3_Click);
+            this.btnReminderProcess.Location = new System.Drawing.Point(332, 176);
+            this.btnReminderProcess.Name = "btnReminderProcess";
+            this.btnReminderProcess.Size = new System.Drawing.Size(115, 23);
+            this.btnReminderProcess.TabIndex = 6;
+            this.btnReminderProcess.Text = "Process Reminders";
+            this.btnReminderProcess.UseVisualStyleBackColor = true;
+            this.btnReminderProcess.Click += new System.EventHandler(this.Button3_Click);
             // 
             // errorProvider1
             // 
             this.errorProvider1.ContainerControl = this;
             // 
+            // reminderImportTitleLabel
+            // 
+            this.reminderImportTitleLabel.AutoSize = true;
+            this.reminderImportTitleLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.reminderImportTitleLabel.Location = new System.Drawing.Point(12, 9);
+            this.reminderImportTitleLabel.Name = "reminderImportTitleLabel";
+            this.reminderImportTitleLabel.Size = new System.Drawing.Size(236, 20);
+            this.reminderImportTitleLabel.TabIndex = 7;
+            this.reminderImportTitleLabel.Text = "Reminder Import Processing";
+            // 
+            // fuelProcessingLabel
+            // 
+            this.fuelProcessingLabel.AutoSize = true;
+            this.fuelProcessingLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.fuelProcessingLabel.Location = new System.Drawing.Point(12, 97);
+            this.fuelProcessingLabel.Name = "fuelProcessingLabel";
+            this.fuelProcessingLabel.Size = new System.Drawing.Size(244, 20);
+            this.fuelProcessingLabel.TabIndex = 8;
+            this.fuelProcessingLabel.Text = "Vehicle Fuel Type Processing";
+            // 
+            // fuelTextBoxLabel
+            // 
+            this.fuelTextBoxLabel.AutoSize = true;
+            this.fuelTextBoxLabel.Location = new System.Drawing.Point(13, 128);
+            this.fuelTextBoxLabel.Name = "fuelTextBoxLabel";
+            this.fuelTextBoxLabel.Size = new System.Drawing.Size(96, 13);
+            this.fuelTextBoxLabel.TabIndex = 9;
+            this.fuelTextBoxLabel.Text = "Vehicle Details File";
+            // 
+            // fuelTextBox
+            // 
+            this.fuelTextBox.Enabled = false;
+            this.fuelTextBox.Location = new System.Drawing.Point(132, 125);
+            this.fuelTextBox.Name = "fuelTextBox";
+            this.fuelTextBox.Size = new System.Drawing.Size(234, 20);
+            this.fuelTextBox.TabIndex = 10;
+            // 
+            // btnSelectVehicleDetails
+            // 
+            this.btnSelectVehicleDetails.Location = new System.Drawing.Point(372, 125);
+            this.btnSelectVehicleDetails.Name = "btnSelectVehicleDetails";
+            this.btnSelectVehicleDetails.Size = new System.Drawing.Size(75, 20);
+            this.btnSelectVehicleDetails.TabIndex = 11;
+            this.btnSelectVehicleDetails.Text = "Select...";
+            this.btnSelectVehicleDetails.UseVisualStyleBackColor = true;
+            this.btnSelectVehicleDetails.Click += new System.EventHandler(this.btnSelectVehicleDetails_Click);
+            // 
+            // btnFuelProcess
+            // 
+            this.btnFuelProcess.Location = new System.Drawing.Point(211, 176);
+            this.btnFuelProcess.Name = "btnFuelProcess";
+            this.btnFuelProcess.Size = new System.Drawing.Size(115, 23);
+            this.btnFuelProcess.TabIndex = 12;
+            this.btnFuelProcess.Text = "Process Fuel Types";
+            this.btnFuelProcess.UseVisualStyleBackColor = true;
+            this.btnFuelProcess.Click += new System.EventHandler(this.btnFuelProcess_Click);
+            // 
+            // openFileDialog3
+            // 
+            this.openFileDialog3.Filter = "Motochek Files (*.mc.txt)|*.mc.txt|All files (*.*)|*.*";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(459, 117);
-            this.Controls.Add(this.button3);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.textBox2);
-            this.Controls.Add(this.textBox1);
-            this.Controls.Add(this.button1);
+            this.ClientSize = new System.Drawing.Size(459, 206);
+            this.Controls.Add(this.btnFuelProcess);
+            this.Controls.Add(this.btnSelectVehicleDetails);
+            this.Controls.Add(this.fuelTextBox);
+            this.Controls.Add(this.fuelTextBoxLabel);
+            this.Controls.Add(this.fuelProcessingLabel);
+            this.Controls.Add(this.reminderImportTitleLabel);
+            this.Controls.Add(this.btnReminderProcess);
+            this.Controls.Add(this.rucTextBoxLabel);
+            this.Controls.Add(this.permitTextBoxLabel);
+            this.Controls.Add(this.btnSelectRuc);
+            this.Controls.Add(this.rucTextBox);
+            this.Controls.Add(this.permitTextBox);
+            this.Controls.Add(this.btnSelectPermit);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.Name = "Form1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -145,16 +217,23 @@
 
         #endregion
 
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Button btnSelectPermit;
+        private System.Windows.Forms.TextBox permitTextBox;
+        private System.Windows.Forms.TextBox rucTextBox;
+        private System.Windows.Forms.Button btnSelectRuc;
+        private System.Windows.Forms.Label permitTextBoxLabel;
+        private System.Windows.Forms.Label rucTextBoxLabel;
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
         private System.Windows.Forms.OpenFileDialog openFileDialog2;
-        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button btnReminderProcess;
         private System.Windows.Forms.ErrorProvider errorProvider1;
+        private System.Windows.Forms.Label reminderImportTitleLabel;
+        private System.Windows.Forms.Label fuelProcessingLabel;
+        private System.Windows.Forms.Button btnFuelProcess;
+        private System.Windows.Forms.Button btnSelectVehicleDetails;
+        private System.Windows.Forms.TextBox fuelTextBox;
+        private System.Windows.Forms.Label fuelTextBoxLabel;
+        private System.Windows.Forms.OpenFileDialog openFileDialog3;
     }
 }
 
