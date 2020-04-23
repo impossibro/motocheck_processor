@@ -46,6 +46,11 @@
             this.btnSelectVehicleDetails = new System.Windows.Forms.Button();
             this.btnFuelProcess = new System.Windows.Forms.Button();
             this.openFileDialog3 = new System.Windows.Forms.OpenFileDialog();
+            this.btnSelectVinFile = new System.Windows.Forms.Button();
+            this.vinTextBox = new System.Windows.Forms.TextBox();
+            this.vinTextBoxLabel = new System.Windows.Forms.Label();
+            this.vinFileLabel = new System.Windows.Forms.Label();
+            this.openFileDialog4 = new System.Windows.Forms.OpenFileDialog();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -113,7 +118,7 @@
             // 
             // btnReminderProcess
             // 
-            this.btnReminderProcess.Location = new System.Drawing.Point(332, 176);
+            this.btnReminderProcess.Location = new System.Drawing.Point(332, 227);
             this.btnReminderProcess.Name = "btnReminderProcess";
             this.btnReminderProcess.Size = new System.Drawing.Size(115, 23);
             this.btnReminderProcess.TabIndex = 6;
@@ -174,7 +179,7 @@
             // 
             // btnFuelProcess
             // 
-            this.btnFuelProcess.Location = new System.Drawing.Point(211, 176);
+            this.btnFuelProcess.Location = new System.Drawing.Point(211, 227);
             this.btnFuelProcess.Name = "btnFuelProcess";
             this.btnFuelProcess.Size = new System.Drawing.Size(115, 23);
             this.btnFuelProcess.TabIndex = 12;
@@ -186,11 +191,56 @@
             // 
             this.openFileDialog3.Filter = "Motochek Files (*.mc.txt)|*.mc.txt|All files (*.*)|*.*";
             // 
+            // btnSelectVinFile
+            // 
+            this.btnSelectVinFile.Location = new System.Drawing.Point(372, 185);
+            this.btnSelectVinFile.Name = "btnSelectVinFile";
+            this.btnSelectVinFile.Size = new System.Drawing.Size(75, 20);
+            this.btnSelectVinFile.TabIndex = 16;
+            this.btnSelectVinFile.Text = "Select...";
+            this.btnSelectVinFile.UseVisualStyleBackColor = true;
+            this.btnSelectVinFile.Click += new System.EventHandler(this.BtnSelectVinFile_Click);
+            // 
+            // vinTextBox
+            // 
+            this.vinTextBox.Enabled = false;
+            this.vinTextBox.Location = new System.Drawing.Point(132, 185);
+            this.vinTextBox.Name = "vinTextBox";
+            this.vinTextBox.Size = new System.Drawing.Size(234, 20);
+            this.vinTextBox.TabIndex = 15;
+            // 
+            // vinTextBoxLabel
+            // 
+            this.vinTextBoxLabel.AutoSize = true;
+            this.vinTextBoxLabel.Location = new System.Drawing.Point(13, 188);
+            this.vinTextBoxLabel.Name = "vinTextBoxLabel";
+            this.vinTextBoxLabel.Size = new System.Drawing.Size(96, 13);
+            this.vinTextBoxLabel.TabIndex = 14;
+            this.vinTextBoxLabel.Text = "Vehicle Details File";
+            // 
+            // vinFileLabel
+            // 
+            this.vinFileLabel.AutoSize = true;
+            this.vinFileLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.vinFileLabel.Location = new System.Drawing.Point(12, 157);
+            this.vinFileLabel.Name = "vinFileLabel";
+            this.vinFileLabel.Size = new System.Drawing.Size(160, 20);
+            this.vinFileLabel.TabIndex = 13;
+            this.vinFileLabel.Text = "VIN/Username File";
+            // 
+            // openFileDialog4
+            // 
+            this.openFileDialog4.FileName = "openFileDialog4";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(459, 206);
+            this.ClientSize = new System.Drawing.Size(459, 262);
+            this.Controls.Add(this.btnSelectVinFile);
+            this.Controls.Add(this.vinTextBox);
+            this.Controls.Add(this.vinTextBoxLabel);
+            this.Controls.Add(this.vinFileLabel);
             this.Controls.Add(this.btnFuelProcess);
             this.Controls.Add(this.btnSelectVehicleDetails);
             this.Controls.Add(this.fuelTextBox);
@@ -234,6 +284,11 @@
         private System.Windows.Forms.TextBox fuelTextBox;
         private System.Windows.Forms.Label fuelTextBoxLabel;
         private System.Windows.Forms.OpenFileDialog openFileDialog3;
+        private System.Windows.Forms.Button btnSelectVinFile;
+        private System.Windows.Forms.TextBox vinTextBox;
+        private System.Windows.Forms.Label vinTextBoxLabel;
+        private System.Windows.Forms.Label vinFileLabel;
+        private System.Windows.Forms.OpenFileDialog openFileDialog4;
     }
 }
 

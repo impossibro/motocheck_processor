@@ -16,10 +16,15 @@ namespace Motochek_Processor
         private Boolean file1OK = false;
         private Boolean file2OK = false;
         private Boolean fuelFileOK = false;
+        private Boolean vinFileOK = false;  
 
         private String[] rawPermitData;
         private String[] rawRUCData;
         private String[] rawFuelData;
+        private String[] rawVINData;
+
+        private List<String> vinNumbers;
+        private List<String> userNames;
 
         private String rego;
         private String vin;
@@ -30,6 +35,7 @@ namespace Motochek_Processor
         private String make;
         private String model;
         private String vehicleYear;
+        private String client;
 
         private List<String> outputs;
         private List<String> fuelOutput;
@@ -46,8 +52,10 @@ namespace Motochek_Processor
             ResetVars();
             outputs = new List<String>();
             fuelOutput = new List<String>();
+            vinNumbers = new List<string>();
+            userNames = new List<string>();
             //create headings for CSV
-            outputs.Add("rego,vin,regExp,wofExp,rucExp");
+            outputs.Add("rego,vin,regExp,wofExp,rucExp,client");
             fuelOutput.Add("rego, vin, vehicleYear, make, model, fuelType");
         }
         
@@ -76,15 +84,17 @@ namespace Motochek_Processor
         private void Button3_Click(object sender, EventArgs e)
         {
             //check if both files have been selected and then process them.
-            if (file1OK && file2OK)
+            if (file1OK && file2OK && vinFileOK)
             {
                 rawPermitData = File.ReadAllLines(permitTextBox.Text);
                 rawRUCData = File.ReadAllLines(rucTextBox.Text);
+                rawVINData = File.ReadAllLines(vinTextBox.Text);
+                ProcessRawVINData();
                 ProcessRegWOFFile();
             }
             else
             {
-                MessageBox.Show("Please select both files", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Please select correct files", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
 
@@ -145,7 +155,9 @@ namespace Motochek_Processor
                         GetRUCExpiry(rego);
                     }
 
-                    outputs.Add(rego + "," + vin + "," + regExp + "," + wofExp + "," + rucExp);
+                    FindClient(vin);
+
+                    outputs.Add(rego + "," + vin + "," + regExp + "," + wofExp + "," + rucExp + "," + client);
                     //MessageBox.Show("Rego: " + rego + "\nVIN: " + vin + "\nReg Expiry: " + regExp + "\nWOF Expiry: " + wofExp + "\nRUC Expiry: " + rucExp, "Motochek Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     ResetVars();
                 }
@@ -234,9 +246,52 @@ namespace Motochek_Processor
             make = "";
             model = "";
             vehicleYear = "0";
+            client = "";
         }
 
 
+
+        //vin number to username matchup functions
+        private void BtnSelectVinFile_Click(object sender, EventArgs e)
+        {
+            if (openFileDialog4.ShowDialog() == DialogResult.OK)
+            {
+                vinTextBox.Text = openFileDialog4.FileName;
+                vinFileOK = true;
+            }
+        }
+
+        private void ProcessRawVINData()
+        {
+            for (int i = 1; i < rawVINData.Length; i++)
+            {
+                if(rawVINData[i].Length > 10)
+                {
+                    userNames.Add(rawVINData[i].Substring(0, 9));
+                    vinNumbers.Add(rawVINData[i].Substring(10, rawVINData[i].Length - 10));
+                }
+                else
+                {
+                    continue;
+                }
+            }
+        }
+
+        private void FindClient(String vinNumber)
+        {
+            for(int i = 0; i < vinNumbers.Count; i++)
+            {
+                if(vinNumbers[i] == vinNumber)
+                {
+                    client = userNames[i];
+                    break;
+                }
+                else
+                {
+                    continue;
+                }
+            }
+        }
 
     }
 }
