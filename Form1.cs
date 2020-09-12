@@ -168,6 +168,7 @@ namespace Motochek_Processor
 
         private void GetRUCExpiry(String reg)
         {
+            //test
             Boolean gotRUC = false;
 
             for(int i = 0; i < rawRUCData.Length; i++)
