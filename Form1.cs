@@ -30,6 +30,7 @@ namespace Motochek_Processor
         private String vin;
         private String regExp;
         private String wofExp;
+        private String cofExp;
         private String rucExp;
         private String fuelType;
         private String make;
@@ -55,7 +56,7 @@ namespace Motochek_Processor
             vinNumbers = new List<string>();
             userNames = new List<string>();
             //create headings for CSV
-            outputs.Add("rego,vin,regExp,wofExp,rucExp,client");
+            outputs.Add("rego,vin,regExp,wofExp,cofExp,rucExp,client");
             fuelOutput.Add("rego, vin, vehicleYear, make, model, fuelType");
         }
         
@@ -141,9 +142,10 @@ namespace Motochek_Processor
                     vin = rawPermitData[i].Substring(13, 17);
                     regExp = rawPermitData[i].Substring(627, 2) + "-" + rawPermitData[i].Substring(629, 2) + "-" + rawPermitData[i].Substring(631, 4);
                     
+                    //check if vehicle has COF instead of WOF.
                     if(rawPermitData[i].Substring(687, 1) == "Y")
                     {
-                        wofExp = rawPermitData[i].Substring(697, 2) + "-" + rawPermitData[i].Substring(699, 2) + "-" + rawPermitData[i].Substring(701, 4);
+                        cofExp = rawPermitData[i].Substring(697, 2) + "-" + rawPermitData[i].Substring(699, 2) + "-" + rawPermitData[i].Substring(701, 4);
                     }
                     else
                     {
@@ -157,7 +159,7 @@ namespace Motochek_Processor
 
                     FindClient(vin);
 
-                    outputs.Add(rego + "," + vin + "," + regExp + "," + wofExp + "," + rucExp + "," + client);
+                    outputs.Add(rego + "," + vin + "," + regExp + "," + wofExp + "," + cofExp + "," + rucExp + "," + client);
                     //MessageBox.Show("Rego: " + rego + "\nVIN: " + vin + "\nReg Expiry: " + regExp + "\nWOF Expiry: " + wofExp + "\nRUC Expiry: " + rucExp, "Motochek Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     ResetVars();
                 }
@@ -242,6 +244,7 @@ namespace Motochek_Processor
             this.vin = "";
             this.regExp = "";
             this.wofExp = "";
+            this.cofExp = "";
             this.rucExp = "0";
             fuelType = "";
             make = "";
