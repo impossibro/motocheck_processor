@@ -5,6 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -51,6 +52,7 @@ namespace Motochek_Processor
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            versionLabel.Text = "v" + Assembly.GetExecutingAssembly().GetName().Version.ToString();
             ResetVars();
             outputs = new List<String>();
             fuelOutput = new List<String>();
@@ -303,6 +305,7 @@ namespace Motochek_Processor
                 }
             }
         }
+
 
     }
 }

@@ -51,6 +51,7 @@
             this.vinTextBoxLabel = new System.Windows.Forms.Label();
             this.vinFileLabel = new System.Windows.Forms.Label();
             this.openFileDialog4 = new System.Windows.Forms.OpenFileDialog();
+            this.versionLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -232,11 +233,21 @@
             // 
             this.openFileDialog4.FileName = "openFileDialog4";
             // 
+            // versionLabel
+            // 
+            this.versionLabel.AutoSize = true;
+            this.versionLabel.Location = new System.Drawing.Point(13, 237);
+            this.versionLabel.Name = "versionLabel";
+            this.versionLabel.Size = new System.Drawing.Size(10, 13);
+            this.versionLabel.TabIndex = 17;
+            this.versionLabel.Text = "-";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(459, 262);
+            this.Controls.Add(this.versionLabel);
             this.Controls.Add(this.btnSelectVinFile);
             this.Controls.Add(this.vinTextBox);
             this.Controls.Add(this.vinTextBoxLabel);
@@ -289,6 +300,7 @@
         private System.Windows.Forms.Label vinTextBoxLabel;
         private System.Windows.Forms.Label vinFileLabel;
         private System.Windows.Forms.OpenFileDialog openFileDialog4;
+        private System.Windows.Forms.Label versionLabel;
     }
 }
 
