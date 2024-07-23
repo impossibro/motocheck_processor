@@ -25,6 +25,7 @@ namespace Motochek_Processor
 
         private List<String> vinNumbers;
         private List<String> userNames;
+        private List<String> regos;
 
         private String rego;
         private String vin;
@@ -138,8 +139,8 @@ namespace Motochek_Processor
                 }
                 else
                 {
-                    rego = rawPermitData[i].Substring(1, 6);
-                    vin = rawPermitData[i].Substring(13, 17);
+                    rego = rawPermitData[i].Substring(1, 6).Replace(" ", string.Empty);
+                    vin = rawPermitData[i].Substring(13, 17).Replace(" ", string.Empty);
                     regExp = rawPermitData[i].Substring(627, 2) + "-" + rawPermitData[i].Substring(629, 2) + "-" + rawPermitData[i].Substring(631, 4);
                     
                     //check if vehicle has COF instead of WOF.
@@ -157,7 +158,7 @@ namespace Motochek_Processor
                         GetRUCExpiry(rego);
                     }
 
-                    FindClient(vin);
+                    FindClient(vin, rego);
 
                     outputs.Add(rego + "," + vin + "," + regExp + "," + wofExp + "," + cofExp + "," + rucExp + "," + client);
                     //MessageBox.Show("Rego: " + rego + "\nVIN: " + vin + "\nReg Expiry: " + regExp + "\nWOF Expiry: " + wofExp + "\nRUC Expiry: " + rucExp, "Motochek Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -281,13 +282,19 @@ namespace Motochek_Processor
             }
         }
 
-        private void FindClient(String vinNumber)
+        private void FindClient(String vinNumber, String rego)
         {
             for(int i = 0; i < vinNumbers.Count; i++)
             {
                 if(vinNumbers[i] == vinNumber)
                 {
                     client = userNames[i];
+                    break;
+                }
+                if(vinNumbers[i] == rego)
+                {
+                    client = userNames[i];
+                    this.vin = rego;
                     break;
                 }
                 else
