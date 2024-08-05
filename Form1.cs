@@ -176,20 +176,13 @@ namespace Motochek_Processor
             //test
             Boolean gotRUC = false;
 
-            for(int i = 0; i < rawRUCData.Length; i++)
+            for(int i = 1; i < rawRUCData.Length; i++)
             {
-                if(i == 0)
+
+                if(rawRUCData[i].Substring(1, 6).Replace(" ", string.Empty) == reg)
                 {
-                    //ignore first line of the text file
-                    continue;
-                }
-                else
-                {
-                    if(rawRUCData[i].Substring(1, 6) == reg)
-                    {
-                        rucExp = rawRUCData[i].Substring(128, 8);
-                        gotRUC = true;
-                    }
+                    rucExp = rawRUCData[i].Substring(128, 8);
+                    gotRUC = true;
                 }
                 if(gotRUC)
                 {
